@@ -78,4 +78,7 @@ def admin():
 
 if __name__ == "__main__":
     # Port 8091 (pairs with the insecure service on 8090).
+    # Justified exception: runs in a Docker container; 0.0.0.0 is required so the published port 8091 is reachable.
+    # Exposure is controlled by docker-compose "ports"; sandbox/lab use only.
+    # nosemgrep: python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host
     app.run(host="0.0.0.0", port=8091, debug=False)

@@ -53,4 +53,7 @@ if __name__ == "__main__":
     # debug is off, but the auth logic is the point — an unauthenticated GET
     # /admin returns the admin panel because the error path fails open.
     # Port 8090 (not 7000: macOS ControlCenter/AirPlay squats 7000).
+    # Justified exception: runs in a Docker container; 0.0.0.0 is required so the published port 8090 is reachable.
+    # Exposure is controlled by docker-compose "ports"; sandbox/lab use only.
+    # nosemgrep: python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host
     app.run(host="0.0.0.0", port=8090, debug=False)

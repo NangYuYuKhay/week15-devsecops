@@ -1,0 +1,7 @@
+title = "week15 lab config"
+[extend]
+useDefault = true     # keep all the default rules
+
+[allowlist]
+description = "Toy lab tokens in documented curl demos (alice-token, bob-token). Not real credentials."
+regexes = ['''\b(alice|bob)-token\b''']
